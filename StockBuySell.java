@@ -13,28 +13,28 @@ public class StockBuySell {
 		return ans;
 	}
 
-	// public static int maxProfit_1(int[] prices) { //better O(n)
-  //
-	// 	int diff[]=new int[prices.length];
-  //
-	// 	int ans=0;
-  //
-	// 	for(int i=1;i<prices.length;i++) {
-	// 		diff[i]=prices[i]-prices[i-1];
-	// 	}
-  //
-	// 	int sum=0;
-	// 	for(int i=0;i<diff.length;i++) {
-  //
-	// 		sum=sum+diff[i];
-	// 		if(sum<0) {
-	// 			sum=0;
-	// 		}
-	// 		if(sum>ans)
-	// 			ans=sum;
-	// 	}
-	// 	return ans;
-	// }
+	public static int maxProfit_1(int[] prices) { //better O(n)
+
+		int diff[]=new int[prices.length];
+
+		int ans=0;
+
+		for(int i=1;i<prices.length;i++) {
+			diff[i]=prices[i]-prices[i-1];
+		}
+
+		int sum=0;
+		for(int i=0;i<diff.length;i++) {
+
+			sum=sum+diff[i];
+			if(sum<0) {
+				sum=0;
+			}
+			if(sum>ans)
+				ans=sum;
+		}
+		return ans;
+	}
 
 	public static void main(String[] args) {
 
