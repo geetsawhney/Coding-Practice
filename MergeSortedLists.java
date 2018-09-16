@@ -35,6 +35,37 @@ public class MergeSortedLists {
 		}
 		return head_1;
 	}
+
+	public static ListNode mergeTwoLists_1(ListNode l1, ListNode l2) {
+		ListNode head=new ListNode(0);
+		ListNode dummy=head;
+
+		while(l1!=null && l2!=null) {
+			if(l1.val<=l2.val) {
+				dummy.next=l1;
+				dummy=l1;
+				l1=l1.next;
+			}
+			else {
+				dummy.next=l2;
+				dummy=l2;
+				l2=l2.next;
+			}
+		}
+
+		if(l1!=null) {
+			dummy.next=l1;
+			return head.next;
+		}
+
+		if(l2!=null) {
+			dummy.next=l2;
+			return head.next;
+		}
+		return head.next;
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ListNode l1 = new ListNode(1);
@@ -45,7 +76,7 @@ public class MergeSortedLists {
 		l2.next=new ListNode(5);
 		l2.next.next=new ListNode(8);
 
-		ListNode head,output=mergeTwoLists(l1, l2);
+		ListNode head,output=mergeTwoLists_1(l1, l2);
 		head=output;
 		while(head!=null) {
 			System.out.println(head.val);
