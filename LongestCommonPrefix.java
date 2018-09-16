@@ -30,7 +30,8 @@ public class LongestCommonPrefix {
 		String out=strs[0];
 
 		for(String s:strs) {
-
+			if(out.length()==0)
+					return out;
 			while(s.indexOf(out)!=0) {
 				out=out.substring(0,out.length()-1);
 			}
