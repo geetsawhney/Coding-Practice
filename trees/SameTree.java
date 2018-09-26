@@ -1,5 +1,5 @@
+//Leetcode 100
 package trees;
-// Definition for a binary tree node.
 
 class SameTree {
 	public static boolean isSameTree(TreeNode p, TreeNode q) {
