@@ -15,20 +15,20 @@ public class CheckLinkedListCycle {
 		return false;
 	}
 
-	// public static boolean hasCycle_1(ListNode head) {
-	// 	if(head==null)
-	// 		return false;
-	// 	ListNode fast=head;
-	// 	ListNode slow=head;
-	//
-	// 	while(fast!=null && fast.next!=null) {
-	// 		fast=fast.next.next;
-	// 		slow=slow.next;
-	// 		if(fast!=null && fast.equals(slow))
-	// 			return true;
-	// 	}
-	// 	return false;
-	// }
+	public static boolean hasCycle_1(ListNode head) {
+		if(head==null)
+			return false;
+		ListNode fast=head;
+		ListNode slow=head;
+
+		while(fast!=null && fast.next!=null) {
+			fast=fast.next.next;
+			slow=slow.next;
+			if(fast!=null && fast.equals(slow))
+				return true;
+		}
+		return false;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
