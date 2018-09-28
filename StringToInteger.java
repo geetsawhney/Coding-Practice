@@ -1,4 +1,4 @@
-
+// leetcode 8
 public class StringToInteger {
 
 	public static int myAtoi(String str) {
