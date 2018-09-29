@@ -2,31 +2,8 @@ package assessment;
 //
 public class ReverseAlgebraicExpression {
 
-//	public static String reverse(String expression) {
-//
-//		StringBuilder sb=new StringBuilder("");
-//		String[] nums= expression.split("[-+*/]");
-////		String[] op=expression.split("[0-9]+[\\.]{0,1}[0-9]+");
-//		char c;
-//		int index=nums.length-1;
-//		for(int i=0;i<expression.length();i++) {
-//			c=expression.charAt(i);
-//			if(c=='+'||c=='-'||c=='*'||c=='/') {
-//				sb.append(nums[index]);
-//				sb.append(c);
-//				index--;
-//			}
-//		}
-//		sb.append(nums[index]);
-//
-//		return sb.toString();
-//
-//	}
-
-
 	public static String reverse(String expression) {
 
-//		StringBuilder sb=new StringBuilder("");
 		String ans="";
 		char c;
 		int start=0;
