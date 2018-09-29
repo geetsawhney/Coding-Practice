@@ -1,5 +1,4 @@
-package assessment;
-//
+
 public class ReverseAlgebraicExpression {
 
 	public static String reverse(String expression) {
