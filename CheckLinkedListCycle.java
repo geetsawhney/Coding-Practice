@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 public class CheckLinkedListCycle {
 
+	// using n space
 	public static boolean hasCycle(ListNode head) {
 		HashSet<ListNode> nodes=new HashSet<>();
 
