@@ -1,12 +1,3 @@
-/*
-Mastermind.java
-
-HW4 starter code
-Original Author: Sara More, more@cs.jhu.edu
-With Edits By:  <Alexa Cilia, ACILIA1>
-
-*/
-
 import java.util.Scanner;
 import java.util.Random;
 
@@ -21,45 +12,45 @@ public class Mastermind {
        @param args Command-line arguments, ignored
     */
    public static void main(String[] args) {
-   
+
       Scanner kb = new Scanner(System.in);
-      
+
       //Generate a random String of length 4 made up of digits 1-9
       String target = genTargetWithNoZeroes();
-   
+
       //The statement below can be uncommented for testing purposes
       //It should be commented out when file is handed in!
       System.out.println("TARGET = " + target);
-   
+
       //Display the game instructions for the user
       outputDirections();
-   
+
       //Collect user's first guess
       System.out.print("Your guess: ");
-      String guess = kb.next();        
+      String guess = kb.next();
       int guessCount = 1;
-      
+
       //Repeat as long as guess is incorrect
       while (!guess.equals(target)) {
-      
+
          //Give clue based on previous guess
          String clue = getClue(target, guess);
          System.out.println(clue);
-         
+
          //Collect next guess and update counter
          System.out.print("Your guess: ");
          guess = kb.next();
          guessCount++;
-      }        
-   
+      }
+
       //Output ending message
-      System.out.println("You got it right in " + guessCount + " guesses.");   
+      System.out.println("You got it right in " + guessCount + " guesses.");
    }
 
 
    /**
       Given a particular target String, returns the appropriate clue to
-      output after the given guess. In the return string, all R’s appear 
+      output after the given guess. In the return string, all R’s appear
       before all W’s, and each R and each W are followed by a single space.
       If neither R’s nor W’s are warranted, returns the String "none".
       @param target The target string which user is trying to guess
@@ -70,72 +61,53 @@ public class Mastermind {
       int i;
       boolean any = false;
       final int limit = 4;
-            
-   
+
+
       for (i = 0; i < limit; i++) {
          //System.out.print("cycle");
          if (target.charAt(i) == guess.charAt(i)) {
             System.out.print("R ");
             any = true;
          } //records first position of non R as t
-          
+
          for (int b = 1; b < limit; b++) {
             for (i = 0; i < limit; i++) {
                if (target.charAt(i) == guess.charAt(b)) {
                   System.out.print("W ");
-                  any = true; 
-               } 
-            } 
+                  any = true;
+               }
+            }
          }
          if (!any) {
             System.out.print("none");
-         } 
+         }
       } //System.out.print("here");
-      return " "; 
-   } 
- 
-
-
-
-      //STUDENT "TO-DO": Replace this comment and the return statement below
-      //with a full working definition of this method as described in the
-      //Javadoc comment above.  DO NOT MODIFY any part of this method's
-      //header, or any other methods in the file.  Do add your name as
-      //indicated in the comment at the top of this file.
-    //  return "Clue generation not yet implemented";
-
-
-
-
-
-
-
-
-
+      return " ";
+   }
 
    /**
       Returns a randomly-selected String containing exactly four
-      digits from the range 1-9 inclusive.  
+      digits from the range 1-9 inclusive.
       @return the randomly-generated 4-digit String
     */
    public static String genTargetWithNoZeroes() {
-   
+
       final int numPlaces = 4;
       final int topOfDigitRange = 9;
-      
+
       //generator to allow us to generate random digits
       Random gen = new Random();
-      
+
       //"adding" digits to a String will result in a String
       String target = "";
-      
+
       //repeatedly generate a non-zero digit
       for (int i = 0; i < numPlaces; i++) {
          target = target + (gen.nextInt(topOfDigitRange) + 1);
       }
       return target;
    }
-   
+
 
    /**
       Outputs game instructions on the screen.
@@ -152,5 +124,5 @@ public class Mastermind {
          + "in your guess, I’ll say none.");
       System.out.println();
    }
-   
+
 }
