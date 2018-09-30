@@ -64,6 +64,39 @@ public class SearchInRotatedArray1 {
 		return -1;
 	}
 
+	public static int search_1(int[] nums, int target) {
+			if(nums.length==1) {
+				if(nums[0]==target)
+					return 0;
+				return -1;
+			}
+
+			return search_helper(nums,0,nums.length-1,target);
+
+		}
+
+		public static int search_helper(int[] nums, int start, int end, int target) {
+			if(start>end) {
+				return -1;
+			}
+			int mid= (start+end)/2;
+
+			if(nums[mid]==target)
+				return mid;
+
+			if(nums[start]<nums[mid]) {
+				if(target > nums[mid] && target < nums[start]) {
+					return search_helper(nums, mid+1, end, target);
+				}
+				return search_helper(nums, start, mid-1, target);
+
+			}else {
+				if(target < nums[mid] && target > nums[end]) {
+					return search_helper(nums, start, mid-1, target);
+				}
+				return search_helper(nums, mid+1, end, target);
+			}
+		}
 
 
 	public static void main(String[] args) {
