@@ -2,6 +2,9 @@
 
 public class UniquePaths {
 	public static long uniquePaths(int m, int n) {
+		// we use mathematical formula
+		//Since we always go specifies number of rights and downs in each turn
+		// We use unique permutations with repitition formula
 		int totalMoves=m+n-2;
 		long ans=1;
 		int max=Math.max(m-1,n-1);
@@ -18,8 +21,6 @@ public class UniquePaths {
 
 		}
 		System.out.println(ans);
-
-
 		return ans;
 	}
 
