@@ -1,4 +1,4 @@
-
+//leetcode 203
 public class RemoveNodeGreaterThanX {
 
 	public static ListNode removeNodes(ListNode listHead, int x) {
@@ -13,6 +13,24 @@ public class RemoveNodeGreaterThanX {
 		listHead.next=child;
 		return listHead;
 	}
+
+	public ListNode removeElements(ListNode head, int val) {
+
+        ListNode dummy=new ListNode(val-1);
+        dummy.next=head;
+        ListNode curr=dummy;
+        while(head!=null){
+            if(head.val==val){
+                curr.next=head.next;
+                head=head.next;
+            }
+            else{
+                head=head.next;
+                curr=curr.next;
+            }
+        }
+        return dummy.next;
+		}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
