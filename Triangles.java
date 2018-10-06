@@ -18,13 +18,15 @@ public class Triangles {
 		return minimumTotalHelper(triangle,0,0,dp);
 	}
 
-	// private static int minimumTotalHelper(List<List<Integer>> triangle, int row,int col) {
-	// 	if(row==triangle.size() || col > row)
-	// 		return 0;
-	// 	int min=Integer.MAX_VALUE;
-	// 	min=Math.min(min, triangle.get(row).get(col)+Math.min(minimumTotalHelper(triangle, row+1, col), minimumTotalHelper(triangle, row+1, col+1)));
-	// 	return min;
-	// }
+
+	// exponential solution
+	private static int minimumTotalHelper(List<List<Integer>> triangle, int row,int col) {
+		if(row==triangle.size() || col > row)
+			return 0;
+		int min=Integer.MAX_VALUE;
+		min=Math.min(min, triangle.get(row).get(col)+Math.min(minimumTotalHelper(triangle, row+1, col), minimumTotalHelper(triangle, row+1, col+1)));
+		return min;
+	}
 
 	private static int minimumTotalHelper(List<List<Integer>> triangle, int row,int col,int[][]dp) {
 		if(row==triangle.size())
