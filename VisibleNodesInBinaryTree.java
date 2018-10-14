@@ -1,5 +1,6 @@
 package assessment;
 
+// visible nodes are those nodes which do not have any node greater than them in the path from root to that node.
 public class VisibleNodesInBinaryTree {
 
 	public static int numberOfVisibleNodes(Tree root) {
