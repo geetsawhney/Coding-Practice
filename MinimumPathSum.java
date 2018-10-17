@@ -26,29 +26,29 @@ public class MinimumPathSum {
     }
 
 	// top down
-	// public static int minPathSum_1(int[][] grid) {
-	// 	int dp[][]=new int[grid.length][grid[0].length];
-	//
-	// 	for(int[] aDP:dp) {
-	// 		Arrays.fill(aDP, -1);
-	// 	}
-	// 	dp[0][0]=grid[0][0];
-	// 	return minPathSum(grid,dp, grid.length-1,grid[0].length-1);
-	// }
-	//
-	// private static int minPathSum(int[][] grid, int[][] dp, int i, int j) {
-	//
-	// 	if(i<0 || j < 0)
-	// 		return Integer.MAX_VALUE;
-	//
-	// 	if(dp[i][j]!=-1)
-	// 		return dp[i][j];
-	//
-	// 	dp[i][j]=Math.min(minPathSum(grid, dp, i-1, j), minPathSum(grid, dp, i, j-1))+grid[i][j];
-	//
-	// 	return dp[i][j];
-	//
-	// }
+	public static int minPathSum_1(int[][] grid) {
+		int dp[][]=new int[grid.length][grid[0].length];
+
+		for(int[] aDP:dp) {
+			Arrays.fill(aDP, -1);
+		}
+		dp[0][0]=grid[0][0];
+		return minPathSum(grid,dp, grid.length-1,grid[0].length-1);
+	}
+
+	private static int minPathSum(int[][] grid, int[][] dp, int i, int j) {
+
+		if(i<0 || j < 0)
+			return Integer.MAX_VALUE;
+
+		if(dp[i][j]!=-1)
+			return dp[i][j];
+
+		dp[i][j]=Math.min(minPathSum(grid, dp, i-1, j), minPathSum(grid, dp, i, j-1))+grid[i][j];
+
+		return dp[i][j];
+
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
