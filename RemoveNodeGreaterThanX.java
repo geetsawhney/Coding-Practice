@@ -22,12 +22,11 @@ public class RemoveNodeGreaterThanX {
         while(head!=null){
             if(head.val==val){
                 curr.next=head.next;
-                head=head.next;
             }
             else{
-                head=head.next;
                 curr=curr.next;
             }
+						head=head.next;
         }
         return dummy.next;
 		}
