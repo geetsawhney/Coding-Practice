@@ -1,3 +1,4 @@
+//leetcode 72
 
 public class EditDistance {
 
@@ -7,7 +8,8 @@ public class EditDistance {
         for(int i=0;i<dp.length;i++) {
         	dp[i][0]=i;
         }
-        for(int i=0;i<dp[0].length;i++) {
+
+				for(int i=0;i<dp[0].length;i++) {
         	dp[0][i]=i;
         }
 
@@ -21,9 +23,7 @@ public class EditDistance {
         		}
         	}
         }
-
         return dp[dp.length-1][dp[0].length-1];
-
     }
 
 	public static void main(String[] args) {
