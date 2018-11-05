@@ -13,7 +13,7 @@ public class WiggleSort {
 
 		for(int i=0;i<nums.length-1;i+=2) {
 
-			if(i-1>=0 && nums[i]>nums[i-1]) {
+			if(i-1>=0 && nums[i] > nums[i-1]) {
 				swap(nums,i,i-1);
 			}
 			if(i+1<nums.length && nums[i]>nums[i+1]) {
