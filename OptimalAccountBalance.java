@@ -19,8 +19,8 @@ public class OptimalAccountBalance {
 	private static int getMinimumTransactionsHelper(List<Integer> balanceList) {
 		if(balanceList.size() < 1)
 			return 0;
-		int min=-getMin(balanceList);
-		int max=getMax(balanceList);
+		int min = -Collections.min(balanceList);
+		int max = Collections.max(balanceList);
 		balanceList.remove((Object)(-min));
 		balanceList.remove((Object)max);
 
@@ -28,16 +28,6 @@ public class OptimalAccountBalance {
 			balanceList.add(max-min);
 
 		return 1+getMinimumTransactionsHelper(balanceList);
-	}
-
-	private static int getMax(List<Integer> balanceList) {
-		// TODO Auto-generated method stub
-		return Collections.max(balanceList);
-	}
-
-	private static int getMin(List<Integer> balanceList) {
-		// TODO Auto-generated method stub
-		return Collections.min(balanceList);
 	}
 
 	private static void removeZeroValueMap(Map<Integer, Integer> balance) {
