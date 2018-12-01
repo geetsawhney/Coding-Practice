@@ -1,5 +1,4 @@
-package assessment;
-
+//Linkedin
 import java.util.*;
 
 public class SocialNetwork {
