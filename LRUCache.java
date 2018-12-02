@@ -1,21 +1,25 @@
-class LRUCache {
+package assessment;
 
-    Map<Integer, DoublyLinkedList> cacheMap;
+import java.util.HashMap;
+import java.util.Map;
+
+public class LRUCache {
+	Map<Integer, DoublyLinkedList> cacheMap;
 	DoublyLinkedList head = new DoublyLinkedList();
 	DoublyLinkedList tail = new DoublyLinkedList();
 	int capacity;
 
-    public LRUCache(int capacity) {
-        this.capacity=capacity;
+	public LRUCache(int capacity) {
+		this.capacity=capacity;
 		cacheMap = new HashMap<>(capacity);
 		head = new DoublyLinkedList();
 		tail = new DoublyLinkedList();
 		head.next=tail;
 		tail.prev=head;
-    }
+	}
 
-    public int get(int key) {
-        if(!cacheMap.containsKey(key))
+	public int get(int key) {
+		if(!cacheMap.containsKey(key))
 			return -1;
 
 		DoublyLinkedList cacheValue=cacheMap.get(key);
@@ -23,16 +27,14 @@ class LRUCache {
 		makeHead(cacheValue);
 
 		return cacheValue.value;
-    }
+	}
 
-    public void put(int key, int value) {
+	public void put(int key, int value) {
 
 		if(cacheMap.containsKey(key)) {
-            DoublyLinkedList cacheValue=cacheMap.get(key);
-			cacheValue.value=value;
-			remove(cacheValue);
-			makeHead(cacheValue);
-
+			cacheMap.get(key).value=value;
+			remove(cacheMap.get(key));
+			makeHead(cacheMap.get(key));
 		}else {
 			DoublyLinkedList cacheValue = new DoublyLinkedList(key, value);
 			if(!(cacheMap.size()<capacity)) {
@@ -44,7 +46,7 @@ class LRUCache {
 		}
 	}
 
-    private void makeHead(DoublyLinkedList node) {
+	private void makeHead(DoublyLinkedList node) {
 		node.next=head.next;
 		node.next.prev=node;
 		node.prev=head;
@@ -59,8 +61,8 @@ class LRUCache {
 		node.prev=null;
 	}
 
-  public static void main(String[] args) {
-
+	public static void main(String[] args) {
+		
 		LRUCache cache = new LRUCache( 2 /* capacity */ );
 
 		cache.put(1, 1);
@@ -73,19 +75,17 @@ class LRUCache {
 		cache.get(3);       // returns 3
 		cache.get(4);       // returns 4
 
+
 	}
 
 }
-
-
 
 class DoublyLinkedList{
 
 	DoublyLinkedList next,prev;
 	int key,value;
 
-	public DoublyLinkedList() {
-	}
+	public DoublyLinkedList() {}
 
 	public DoublyLinkedList(int key, int value) {
 		this.key=key;
@@ -93,11 +93,3 @@ class DoublyLinkedList{
 	}
 
 }
-
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
