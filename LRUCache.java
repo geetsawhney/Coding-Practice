@@ -1,0 +1,85 @@
+class LRUCache {
+
+    Map<Integer, DoublyLinkedList> cacheMap;
+	DoublyLinkedList head = new DoublyLinkedList();
+	DoublyLinkedList tail = new DoublyLinkedList();
+	int capacity;
+
+    public LRUCache(int capacity) {
+        this.capacity=capacity;
+		cacheMap = new HashMap<>(capacity);
+		head = new DoublyLinkedList();
+		tail = new DoublyLinkedList();
+		head.next=tail;
+		tail.prev=head;
+    }
+
+    public int get(int key) {
+        if(!cacheMap.containsKey(key))
+			return -1;
+
+		DoublyLinkedList cacheValue=cacheMap.get(key);
+		remove(cacheValue);
+		makeHead(cacheValue);
+
+		return cacheValue.value;
+    }
+
+    public void put(int key, int value) {
+
+		if(cacheMap.containsKey(key)) {
+            DoublyLinkedList cacheValue=cacheMap.get(key);
+			cacheValue.value=value;
+			remove(cacheValue);
+			makeHead(cacheValue);
+
+		}else {
+			DoublyLinkedList cacheValue = new DoublyLinkedList(key, value);
+			if(!(cacheMap.size()<capacity)) {
+				cacheMap.remove(tail.prev.key);
+				remove(tail.prev);
+			}
+				cacheMap.put(key, cacheValue);
+				makeHead(cacheValue);
+		}
+	}
+
+    private void makeHead(DoublyLinkedList node) {
+		node.next=head.next;
+		node.next.prev=node;
+		node.prev=head;
+		head.next=node;
+	}
+
+	private void remove(DoublyLinkedList node) {
+
+		node.next.prev=node.prev;
+		node.prev.next=node.next;
+		node.next=null;
+		node.prev=null;
+	}
+
+}
+
+class DoublyLinkedList{
+
+	DoublyLinkedList next,prev;
+	int key,value;
+
+	public DoublyLinkedList() {
+	}
+
+	public DoublyLinkedList(int key, int value) {
+		this.key=key;
+		this.value=value;
+	}
+
+}
+
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
