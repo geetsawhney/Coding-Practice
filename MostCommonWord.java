@@ -1,4 +1,4 @@
-package assessment;
+//leetcode 819
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +14,7 @@ public class MostCommonWord {
 		Set<String> ban = new HashSet<>();
 		ban.addAll(Arrays.asList(banned));
 		Map<String, Integer> map=new HashMap<>();
+
 		int ansCount=0;
 		String ans = null;
 
@@ -31,7 +32,6 @@ public class MostCommonWord {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
