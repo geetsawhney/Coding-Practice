@@ -1,5 +1,7 @@
 package assessment;
 
+//leetcode 692
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,10 +13,10 @@ import java.util.PriorityQueue;
 public class MostFrequentK {
 	public List<String> topKFrequent(String[] words, int k) {
 		Map<String, Integer> count =new HashMap<>();
+
 		class StringFreq{
 			String string;
 			int freq;
-
 			public StringFreq(String x,int y) {
 				string=x;
 				freq=y;
