@@ -4,14 +4,14 @@ package assessment;
 public class VisibleNodesInBinaryTree {
 
 	public static int numberOfVisibleNodes(Tree root) {
-
 		return numberOfVisibleNodes(root,Integer.MIN_VALUE);
-
 	}
+
 	private static int numberOfVisibleNodes(Tree root, int maxInPath) {
 		if(root==null) return 0;
 
-		if(root.val<maxInPath) return numberOfVisibleNodes(root.l, maxInPath) + numberOfVisibleNodes(root.r, maxInPath);
+		if(root.val<maxInPath)
+			return numberOfVisibleNodes(root.l, maxInPath) + numberOfVisibleNodes(root.r, maxInPath);
 
 		return 1+ numberOfVisibleNodes(root.l, root.val)+ numberOfVisibleNodes(root.r, root.val);
 	}
