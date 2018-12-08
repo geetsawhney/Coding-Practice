@@ -25,12 +25,7 @@ public class VisibleNodesInBinaryTree {
 		root.r.l=new Tree(1);
 
 		System.out.println(numberOfVisibleNodes(root));
-
-
-
 	}
-
-
 }
 
 class Tree{
