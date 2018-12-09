@@ -44,4 +44,25 @@ public class RandomListNodeCopy {
         }
         return newHead;
     }
+
+    public RandomListNode copyRandomList_2(RandomListNode head) {
+        return copyRandomList(head,new HashMap<RandomListNode,RandomListNode>());
+    }
+
+    public RandomListNode copyRandomList(RandomListNode head, HashMap<RandomListNode,RandomListNode> map){
+
+        if(head == null)
+            return null;
+
+        if(map.containsKey(head))
+            return map.get(head);
+
+        RandomListNode node = new RandomListNode(head.label);
+        map.put(head,node);
+
+        node.next=copyRandomList(head.next,map);
+        node.random=copyRandomList(head.random,map);
+
+        return node;
+    }
 }
